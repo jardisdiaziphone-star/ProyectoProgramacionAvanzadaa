@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Proyecto Académico</title>
+
+    <!-- Bundles de MVC -->
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- CSS del tema Creative -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/styles.css" rel="stylesheet" />
+    <link href="~/Content/css/creative.min.css" rel="stylesheet" />
+</head>
+<body id="page-top">
+    <!-- Navbar con Creative -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" id="mainNav">
+        <div class="container">
+            @Html.ActionLink("Proyecto Académico", "Index", "Home", null, new { @class = "navbar-brand text-white" })
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "nav-link text-white" })</li>
+                    <li class="nav-item">@Html.ActionLink("Estudiantes", "Index", "Estudiantes", null, new { @class = "nav-link text-white" })</li>
+                    <li class="nav-item">@Html.ActionLink("Actividades", "Index", "Criterios", null, new { @class = "nav-link text-white" })</li>
+                    <li class="nav-item">@Html.ActionLink("Calificaciones", "Index", "Calificaciones", null, new { @class = "nav-link text-white" })</li>
+                    <li class="nav-item">@Html.ActionLink("Cursos", "Index", "Cursos", null, new { @class = "nav-link text-white" })</li>
+                    <li class="nav-item">@Html.ActionLink("Profesores", "Index", "Profesores", null, new { @class = "nav-link text-white" })</li>
+                    <li class="nav-item">@Html.ActionLink("Login", "Index", "Login", null, new { @class = "nav-link text-white" })</li>
+                    <li class="nav-item">@Html.ActionLink("Cerrar sesión", "Logout", "Login", null, new { @class = "nav-link text-danger" })</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido dinámico -->
+    <main class="container mt-5 pt-5">
+        @RenderBody()
+    </main>
+
+    <!-- Footer con Creative -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="text-muted">© @DateTime.Now.Year Proyecto Académico - Jardis</p>
+        </div>
+    </footer>
+
+    <!-- Bundles de MVC -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <!-- JS del tema Creative -->
+    <script src="~/Scripts/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/js/creative.min.js"></script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

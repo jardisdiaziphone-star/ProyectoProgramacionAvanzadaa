@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CalificacionesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Calificaciones">
+          <Key>
+            <PropertyRef Name="IdCalificacion" />
+          </Key>
+          <Property Name="IdCalificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEstudiante" Type="int" />
+          <Property Name="IdCriterio" Type="int" />
+          <Property Name="NotaBase" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="NotaFinal" Type="decimal" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="Criterios">
+          <Key>
+            <PropertyRef Name="IdCriterio" />
+          </Key>
+          <Property Name="IdCriterio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Porcentaje" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="IdProfesor" Type="int" />
+        </EntityType>
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="IdCurso" />
+          </Key>
+          <Property Name="IdCurso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCurso" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Estudiantes">
+          <Key>
+            <PropertyRef Name="IdEstudiante" />
+          </Key>
+          <Property Name="IdEstudiante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="Curso" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdCurso" Type="int" />
+        </EntityType>
+        <EntityType Name="Profesores">
+          <Key>
+            <PropertyRef Name="IdProfesor" />
+          </Key>
+          <Property Name="IdProfesor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Especialidad" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__Calificac__IdCri__3C69FB99">
+          <End Role="Criterios" Type="Self.Criterios" Multiplicity="0..1" />
+          <End Role="Calificaciones" Type="Self.Calificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Criterios">
+              <PropertyRef Name="IdCriterio" />
+            </Principal>
+            <Dependent Role="Calificaciones">
+              <PropertyRef Name="IdCriterio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calificac__IdEst__3B75D760">
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="0..1" />
+          <End Role="Calificaciones" Type="Self.Calificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiantes">
+              <PropertyRef Name="IdEstudiante" />
+            </Principal>
+            <Dependent Role="Calificaciones">
+              <PropertyRef Name="IdEstudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Criterios_Profesores">
+          <End Role="Profesores" Type="Self.Profesores" Multiplicity="0..1" />
+          <End Role="Criterios" Type="Self.Criterios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesores">
+              <PropertyRef Name="IdProfesor" />
+            </Principal>
+            <Dependent Role="Criterios">
+              <PropertyRef Name="IdProfesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiantes_Cursos">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="IdCurso" />
+            </Principal>
+            <Dependent Role="Estudiantes">
+              <PropertyRef Name="IdCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CalificacionesDBModelStoreContainer">
+          <EntitySet Name="Calificaciones" EntityType="Self.Calificaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Criterios" EntityType="Self.Criterios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estudiantes" EntityType="Self.Estudiantes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profesores" EntityType="Self.Profesores" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Calificac__IdCri__3C69FB99" Association="Self.FK__Calificac__IdCri__3C69FB99">
+            <End Role="Criterios" EntitySet="Criterios" />
+            <End Role="Calificaciones" EntitySet="Calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calificac__IdEst__3B75D760" Association="Self.FK__Calificac__IdEst__3B75D760">
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+            <End Role="Calificaciones" EntitySet="Calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Criterios_Profesores" Association="Self.FK_Criterios_Profesores">
+            <End Role="Profesores" EntitySet="Profesores" />
+            <End Role="Criterios" EntitySet="Criterios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiantes_Cursos" Association="Self.FK_Estudiantes_Cursos">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CalificacionesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Calificaciones">
+          <Key>
+            <PropertyRef Name="IdCalificacion" />
+          </Key>
+          <Property Name="IdCalificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEstudiante" Type="Int32" />
+          <Property Name="IdCriterio" Type="Int32" />
+          <Property Name="NotaBase" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="NotaFinal" Type="Decimal" Precision="5" Scale="2" />
+          <NavigationProperty Name="Criterios" Relationship="Self.FK__Calificac__IdCri__3C69FB99" FromRole="Calificaciones" ToRole="Criterios" />
+          <NavigationProperty Name="Estudiantes" Relationship="Self.FK__Calificac__IdEst__3B75D760" FromRole="Calificaciones" ToRole="Estudiantes" />
+        </EntityType>
+        <EntityType Name="Criterios">
+          <Key>
+            <PropertyRef Name="IdCriterio" />
+          </Key>
+          <Property Name="IdCriterio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Porcentaje" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="IdProfesor" Type="Int32" />
+          <NavigationProperty Name="Calificaciones" Relationship="Self.FK__Calificac__IdCri__3C69FB99" FromRole="Criterios" ToRole="Calificaciones" />
+          <NavigationProperty Name="Profesores" Relationship="Self.FK_Criterios_Profesores" FromRole="Criterios" ToRole="Profesores" />
+        </EntityType>
+        <EntityType Name="Cursos">
+          <Key>
+            <PropertyRef Name="IdCurso" />
+          </Key>
+          <Property Name="IdCurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCurso" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Estudiantes" Relationship="Self.FK_Estudiantes_Cursos" FromRole="Cursos" ToRole="Estudiantes" />
+        </EntityType>
+        <EntityType Name="Estudiantes">
+          <Key>
+            <PropertyRef Name="IdEstudiante" />
+          </Key>
+          <Property Name="IdEstudiante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Curso" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdCurso" Type="Int32" />
+          <NavigationProperty Name="Calificaciones" Relationship="Self.FK__Calificac__IdEst__3B75D760" FromRole="Estudiantes" ToRole="Calificaciones" />
+          <NavigationProperty Name="Cursos" Relationship="Self.FK_Estudiantes_Cursos" FromRole="Estudiantes" ToRole="Cursos" />
+        </EntityType>
+        <EntityType Name="Profesores">
+          <Key>
+            <PropertyRef Name="IdProfesor" />
+          </Key>
+          <Property Name="IdProfesor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Especialidad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Criterios" Relationship="Self.FK_Criterios_Profesores" FromRole="Profesores" ToRole="Criterios" />
+        </EntityType>
+        <Association Name="FK__Calificac__IdCri__3C69FB99">
+          <End Role="Criterios" Type="Self.Criterios" Multiplicity="0..1" />
+          <End Role="Calificaciones" Type="Self.Calificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Criterios">
+              <PropertyRef Name="IdCriterio" />
+            </Principal>
+            <Dependent Role="Calificaciones">
+              <PropertyRef Name="IdCriterio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calificac__IdEst__3B75D760">
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="0..1" />
+          <End Role="Calificaciones" Type="Self.Calificaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estudiantes">
+              <PropertyRef Name="IdEstudiante" />
+            </Principal>
+            <Dependent Role="Calificaciones">
+              <PropertyRef Name="IdEstudiante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Criterios_Profesores">
+          <End Role="Profesores" Type="Self.Profesores" Multiplicity="0..1" />
+          <End Role="Criterios" Type="Self.Criterios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesores">
+              <PropertyRef Name="IdProfesor" />
+            </Principal>
+            <Dependent Role="Criterios">
+              <PropertyRef Name="IdProfesor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiantes_Cursos">
+          <End Role="Cursos" Type="Self.Cursos" Multiplicity="0..1" />
+          <End Role="Estudiantes" Type="Self.Estudiantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cursos">
+              <PropertyRef Name="IdCurso" />
+            </Principal>
+            <Dependent Role="Estudiantes">
+              <PropertyRef Name="IdCurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CalificacionesDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Calificaciones" EntityType="Self.Calificaciones" />
+          <EntitySet Name="Criterios" EntityType="Self.Criterios" />
+          <EntitySet Name="Cursos" EntityType="Self.Cursos" />
+          <EntitySet Name="Estudiantes" EntityType="Self.Estudiantes" />
+          <EntitySet Name="Profesores" EntityType="Self.Profesores" />
+          <AssociationSet Name="FK__Calificac__IdCri__3C69FB99" Association="Self.FK__Calificac__IdCri__3C69FB99">
+            <End Role="Criterios" EntitySet="Criterios" />
+            <End Role="Calificaciones" EntitySet="Calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calificac__IdEst__3B75D760" Association="Self.FK__Calificac__IdEst__3B75D760">
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+            <End Role="Calificaciones" EntitySet="Calificaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Criterios_Profesores" Association="Self.FK_Criterios_Profesores">
+            <End Role="Profesores" EntitySet="Profesores" />
+            <End Role="Criterios" EntitySet="Criterios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiantes_Cursos" Association="Self.FK_Estudiantes_Cursos">
+            <End Role="Cursos" EntitySet="Cursos" />
+            <End Role="Estudiantes" EntitySet="Estudiantes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CalificacionesDBModelStoreContainer" CdmEntityContainer="CalificacionesDBEntities1">
+          <EntitySetMapping Name="Calificaciones">
+            <EntityTypeMapping TypeName="CalificacionesDBModel.Calificaciones">
+              <MappingFragment StoreEntitySet="Calificaciones">
+                <ScalarProperty Name="IdCalificacion" ColumnName="IdCalificacion" />
+                <ScalarProperty Name="IdEstudiante" ColumnName="IdEstudiante" />
+                <ScalarProperty Name="IdCriterio" ColumnName="IdCriterio" />
+                <ScalarProperty Name="NotaBase" ColumnName="NotaBase" />
+                <ScalarProperty Name="NotaFinal" ColumnName="NotaFinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Criterios">
+            <EntityTypeMapping TypeName="CalificacionesDBModel.Criterios">
+              <MappingFragment StoreEntitySet="Criterios">
+                <ScalarProperty Name="IdCriterio" ColumnName="IdCriterio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+                <ScalarProperty Name="IdProfesor" ColumnName="IdProfesor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cursos">
+            <EntityTypeMapping TypeName="CalificacionesDBModel.Cursos">
+              <MappingFragment StoreEntitySet="Cursos">
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+                <ScalarProperty Name="NombreCurso" ColumnName="NombreCurso" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estudiantes">
+            <EntityTypeMapping TypeName="CalificacionesDBModel.Estudiantes">
+              <MappingFragment StoreEntitySet="Estudiantes">
+                <ScalarProperty Name="IdEstudiante" ColumnName="IdEstudiante" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Curso" ColumnName="Curso" />
+                <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profesores">
+            <EntityTypeMapping TypeName="CalificacionesDBModel.Profesores">
+              <MappingFragment StoreEntitySet="Profesores">
+                <ScalarProperty Name="IdProfesor" ColumnName="IdProfesor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Especialidad" ColumnName="Especialidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

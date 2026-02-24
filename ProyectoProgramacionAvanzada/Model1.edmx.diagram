@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="22f672f87a0044bfbf5a57c6ced4c6ba" Name="Diagram1">
+        <EntityTypeShape EntityType="CalificacionesDBModel.Calificaciones" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CalificacionesDBModel.Criterios" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CalificacionesDBModel.Cursos" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CalificacionesDBModel.Estudiantes" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CalificacionesDBModel.Profesores" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="CalificacionesDBModel.FK__Calificac__IdCri__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="CalificacionesDBModel.FK__Calificac__IdEst__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="CalificacionesDBModel.FK_Criterios_Profesores" ManuallyRouted="false" />
+        <AssociationConnector Association="CalificacionesDBModel.FK_Estudiantes_Cursos" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

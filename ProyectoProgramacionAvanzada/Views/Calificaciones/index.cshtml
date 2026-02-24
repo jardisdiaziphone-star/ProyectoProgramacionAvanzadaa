@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ProyectoProgramacionAvanzada.Calificaciones>
+@{
+    ViewBag.Title = "Calificaciones";
+}
+
+<!-- Encabezado institucional -->
+<div class="text-center mb-4">
+    <img src="~/Content/logo.png" alt="Logo Institucional" style="height:80px;" />
+    <h1 class="mt-2">Proyecto Académico</h1>
+    <h3>Listado de Calificaciones</h3>
+    <hr />
+</div>
+
+<p>
+    <a href="@Url.Action("Create","Calificaciones")" class="btn btn-success btn-lg rounded shadow">Agregar nueva calificación</a>
+    <a href="@Url.Action("ExportPdf","Calificaciones")" class="btn btn-info btn-lg rounded shadow">Generar PDF</a>
+</p>
+
+@foreach (var materia in Model.Select(m => m.Criterios.Nombre).Distinct())
+{
+    <h3 class="mt-4">@materia</h3>
+    <table class="table table-striped shadow rounded">
+        <thead class="table-dark">
+            <tr>
+                <th>Estudiante</th>
+                <th>% obtenido</th>
+                <th>Nota final</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Where(c => c.Criterios.Nombre == materia))
+            {
+                <tr>
+                    <td>@item.Estudiantes.Nombre</td>
+                    <td>@string.Format("{0:0}%", item.NotaBase)</td>
+                    <td>@string.Format("{0:0}", item.NotaFinal)</td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.IdCalificacion }, new { @class = "btn btn-warning btn-sm rounded" }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.IdCalificacion }, new { @class = "btn btn-primary btn-sm rounded" }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.IdCalificacion }, new { @class = "btn btn-danger btn-sm rounded" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

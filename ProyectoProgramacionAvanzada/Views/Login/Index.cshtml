@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Login Profesor";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card shadow rounded">
+            <div class="card-header bg-dark text-white text-center">
+                <h4>Acceso Profesor</h4>
+            </div>
+            <div class="card-body">
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger text-center">@ViewBag.Error</div>
+                }
+
+                @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+                {
+                    <div class="form-group mb-3">
+                        @Html.Label("Usuario")
+                        @Html.TextBox("Username", null, new { @class = "form-control", placeholder = "Ingrese usuario" })
+                    </div>
+                    <div class="form-group mb-3">
+                        @Html.Label("Contraseña")
+                        @Html.Password("Password", null, new { @class = "form-control", placeholder = "Ingrese contraseña" })
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 rounded shadow">Ingresar</button>
+                }
+            </div>
+            <div class="card-footer text-center">
+                <a href="@Url.Action("Index","Home")" class="btn btn-secondary btn-sm rounded">Volver al inicio</a>
+            </div>
+        </div>
+    </div>
+</div>

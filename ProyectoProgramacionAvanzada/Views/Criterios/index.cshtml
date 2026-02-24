@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ProyectoProgramacionAvanzada.Criterios>
+@{
+    ViewBag.Title = "Actividades";
+}
+
+<h2>Actividades</h2>
+
+<p>
+    <a href="@Url.Action("Create","Criterios")" class="btn btn-success btn-lg rounded shadow">Agregar nueva actividad</a>
+</p>
+
+<table class="table table-striped shadow rounded">
+    <thead class="table-dark">
+        <tr>
+            <th>Actividad</th>
+            <th>Porcentaje</th>
+            <th>Profesor</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@string.Format("{0:0}%", item.Porcentaje)</td> <!-- sin decimal -->
+                <td>@item.Profesores.Nombre</td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdCriterio }, new { @class = "btn btn-warning btn-sm rounded" }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.IdCriterio }, new { @class = "btn btn-primary btn-sm rounded" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdCriterio }, new { @class = "btn btn-danger btn-sm rounded" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

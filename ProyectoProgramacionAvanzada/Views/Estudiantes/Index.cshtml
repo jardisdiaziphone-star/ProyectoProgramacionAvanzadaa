@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ProyectoProgramacionAvanzada.Estudiantes>
+@{
+    ViewBag.Title = "Estudiantes";
+}
+
+<h2>Estudiantes</h2>
+
+<p>
+    <a href="@Url.Action("Create","Estudiantes")" class="btn btn-success btn-lg rounded shadow">Agregar nuevo estudiante</a>
+</p>
+
+<table class="table table-striped shadow rounded">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.Curso)</th>
+            <th>@Html.DisplayNameFor(model => model.Cursos.NombreCurso)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.Curso)</td>
+                <td>@Html.DisplayFor(modelItem => item.Cursos.NombreCurso)</td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdEstudiante }, new { @class = "btn btn-warning btn-sm rounded" }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.IdEstudiante }, new { @class = "btn btn-primary btn-sm rounded" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdEstudiante }, new { @class = "btn btn-danger btn-sm rounded" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

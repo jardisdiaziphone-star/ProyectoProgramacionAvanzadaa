@@ -1,0 +1,26 @@
+﻿@model ProyectoProgramacionAvanzada.Calificaciones
+
+<h2>Eliminar Calificación</h2>
+
+<h3>¿Seguro que deseas eliminar esta calificación?</h3>
+<dl class="dl-horizontal">
+    <dt>Estudiante</dt>
+    <dd>@Model.Estudiantes.Nombre</dd>
+
+    <dt>Criterio</dt>
+    <dd>@Model.Criterios.Nombre</dd>
+
+    <dt>Nota Base</dt>
+    <dd>@Model.NotaBase</dd>
+
+    <dt>Nota Final</dt>
+    <dd>@Model.NotaFinal</dd>
+</dl>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <input type="submit" value="Eliminar" class="btn btn-danger" />
+    @Html.ActionLink("Cancelar", "Index")
+}

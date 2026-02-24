@@ -1,0 +1,20 @@
+﻿@model ProyectoProgramacionAvanzada.Calificaciones
+
+<h2>Detalles de Calificación</h2>
+
+<dl class="dl-horizontal">
+    <dt>Estudiante</dt>
+    <dd>@Model.Estudiantes.Nombre</dd>
+
+    <dt>Criterio</dt>
+    <dd>@Model.Criterios.Nombre</dd>
+
+    <dt>Nota Base</dt>
+    <dd>@Model.NotaBase</dd>
+
+    <dt>Nota Final</dt>
+    <dd>@Model.NotaFinal</dd>
+</dl>
+
+<p>@Html.ActionLink("Volver al listado", "Index")</p>
+
