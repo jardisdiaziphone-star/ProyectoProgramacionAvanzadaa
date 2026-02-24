@@ -1,0 +1,26 @@
+﻿@model ProyectoProgramacionAvanzada.Calificaciones
+
+<h2>Agregar Calificación</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.IdEstudiante, "Estudiante")
+        @Html.DropDownList("IdEstudiante", null, "-- Seleccione Estudiante --", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.IdCriterio, "Criterio")
+        @Html.DropDownList("IdCriterio", null, "-- Seleccione Criterio --", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.NotaBase, "Nota Base")
+        @Html.TextBoxFor(m => m.NotaBase, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+}
+

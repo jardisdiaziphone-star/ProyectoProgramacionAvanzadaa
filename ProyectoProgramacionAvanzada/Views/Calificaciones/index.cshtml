@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ProyectoProgramacionAvanzada.Calificaciones>
+
+<h2>Reporte de Calificaciones</h2>
+
+<table class="table">
+    <tr>
+        <th>Estudiante</th>
+        <th>Criterio</th>
+        <th>Nota Base</th>
+        <th>Nota Final</th>
+    </tr>
+    @foreach (var cal in Model)
+    {
+        <tr>
+            <td>@cal.Estudiantes.Nombre</td>
+            <td>@cal.Criterios.Nombre</td>
+            <td>@cal.NotaBase</td>
+            <td>@cal.NotaFinal</td>
+        </tr>
+    }
+</table>
+
+<p>
+    @Html.ActionLink("Agregar nueva calificación", "Create")
+</p>
+

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ProyectoProgramacionAvanzada.Criterios>
+
+<h2>Lista de Criterios</h2>
+<table class="table">
+    <tr>
+        <th>Nombre</th>
+        <th>Porcentaje</th>
+    </tr>
+    @foreach (var crit in Model)
+    {
+        <tr>
+            <td>@crit.Nombre</td>
+            <td>@crit.Porcentaje</td>
+        </tr>
+    }
+</table>
+
+<p>
+    @Html.ActionLink("Agregar nuevo criterio", "Create")
+</p>
+

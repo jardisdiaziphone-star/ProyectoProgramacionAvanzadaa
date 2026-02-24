@@ -1,0 +1,21 @@
+﻿@model ProyectoProgramacionAvanzada.Criterios
+
+<h2>Agregar Criterio</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nombre)
+        @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Porcentaje)
+        @Html.TextBoxFor(m => m.Porcentaje, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+}
+

@@ -1,0 +1,24 @@
+﻿@model IEnumerable<ProyectoProgramacionAvanzada.Estudiantes>
+
+<h2>Lista de Estudiantes</h2>
+
+<table class="table">
+    <tr>
+        <th>Nombre</th>
+        <th>Curso</th>
+    </tr>
+    @foreach (var est in Model)
+    {
+        <tr>
+            <td>@est.Nombre</td>
+            <td>@est.Curso</td>
+        </tr>
+    }
+</table>
+
+<p>
+    @Html.ActionLink("Agregar nuevo estudiante", "Create")
+</p>
+
+
+
