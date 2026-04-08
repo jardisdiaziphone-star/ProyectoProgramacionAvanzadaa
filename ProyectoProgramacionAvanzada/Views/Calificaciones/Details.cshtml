@@ -12,9 +12,8 @@
     <dt>Nota Base</dt>
     <dd>@Model.NotaBase</dd>
 
-    <dt>Nota Final</dt>
-    <dd>@Model.NotaFinal</dd>
+    <dt>Nota Final (escala 0–100)</dt>
+    <dd>@string.Format("{0:0.00}", Model.NotaFinal)</dd>
 </dl>
 
 <p>@Html.ActionLink("Volver al listado", "Index")</p>
-

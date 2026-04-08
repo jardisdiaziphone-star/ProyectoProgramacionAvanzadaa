@@ -28,5 +28,6 @@ namespace ProyectoProgramacionAvanzada
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Calificaciones> Calificaciones { get; set; }
         public virtual Profesores Profesores { get; set; }
+        public decimal? Maximo { get; internal set; }
     }
 }
