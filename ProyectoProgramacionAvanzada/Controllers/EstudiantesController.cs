@@ -109,9 +109,9 @@ namespace ProyectoProgramacionAvanzada.Controllers
             if (estudiantes == null)
             {
                 return HttpNotFound();
-            }
-            return View(estudiantes);
         }
+            return View(estudiantes);
+    }
 
         // POST: Estudiantes/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -122,7 +122,7 @@ namespace ProyectoProgramacionAvanzada.Controllers
             db.Estudiantes.Remove(estudiantes);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
+}
 
         protected override void Dispose(bool disposing)
         {

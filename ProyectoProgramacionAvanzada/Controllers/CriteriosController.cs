@@ -5,8 +5,10 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using ProyectoProgramacionAvanzada;
 using System.Web.Mvc;
 using ProyectoProgramacionAvanzada;
+
 
 namespace ProyectoProgramacionAvanzada.Controllers
 {
@@ -107,9 +109,9 @@ namespace ProyectoProgramacionAvanzada.Controllers
             if (criterios == null)
             {
                 return HttpNotFound();
-            }
-            return View(criterios);
         }
+            return View(criterios);
+    }
 
         // POST: Criterios/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -120,7 +122,7 @@ namespace ProyectoProgramacionAvanzada.Controllers
             db.Criterios.Remove(criterios);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
+}
 
         protected override void Dispose(bool disposing)
         {

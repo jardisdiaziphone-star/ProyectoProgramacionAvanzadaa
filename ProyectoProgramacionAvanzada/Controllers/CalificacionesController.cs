@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using ProyectoProgramacionAvanzada;
+using ProyectoProgramacionAvanzada; 
 
 namespace ProyectoProgramacionAvanzada.Controllers
 {
@@ -80,7 +80,7 @@ namespace ProyectoProgramacionAvanzada.Controllers
             ViewBag.IdEstudiante = new SelectList(db.Estudiantes, "IdEstudiante", "Nombre", calificacion.IdEstudiante);
             ViewBag.IdCriterio = new SelectList(db.Criterios, "IdCriterio", "Nombre", calificacion.IdCriterio);
             return View(calificacion);
-        }
+    }
 
         // POST: Calificaciones/Edit/5
         [HttpPost]
@@ -106,7 +106,7 @@ namespace ProyectoProgramacionAvanzada.Controllers
             ViewBag.IdEstudiante = new SelectList(db.Estudiantes, "IdEstudiante", "Nombre", calificacion.IdEstudiante);
             ViewBag.IdCriterio = new SelectList(db.Criterios, "IdCriterio", "Nombre", calificacion.IdCriterio);
             return View(calificacion);
-        }
+}
 
         // GET: Calificaciones/Delete/5
         public ActionResult Delete(int? id)

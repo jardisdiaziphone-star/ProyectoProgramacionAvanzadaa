@@ -11,17 +11,17 @@
 
 <table class="table table-striped shadow rounded">
     <thead class="table-dark">
-        <tr>
+    <tr>
             <th>Actividad</th>
-            <th>Porcentaje</th>
+        <th>Porcentaje</th>
             <th>Profesor</th>
             <th>Acciones</th>
-        </tr>
+    </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
-        {
-            <tr>
+    {
+        <tr>
                 <td>@item.Nombre</td>
                 <td>@string.Format("{0:0}%", item.Porcentaje)</td> <!-- sin decimal -->
                 <td>@item.Profesores.Nombre</td>
@@ -30,7 +30,12 @@
                     @Html.ActionLink("Detalles", "Details", new { id = item.IdCriterio }, new { @class = "btn btn-primary btn-sm rounded" }) |
                     @Html.ActionLink("Eliminar", "Delete", new { id = item.IdCriterio }, new { @class = "btn btn-danger btn-sm rounded" })
                 </td>
-            </tr>
-        }
+        </tr>
+    }
     </tbody>
 </table>
+
+<p>
+    @Html.ActionLink("Agregar nuevo criterio", "Create")
+</p>
+

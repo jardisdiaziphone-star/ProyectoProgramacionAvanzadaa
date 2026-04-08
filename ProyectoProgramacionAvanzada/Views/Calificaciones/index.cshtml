@@ -21,17 +21,17 @@
     <h3 class="mt-4">@materia</h3>
     <table class="table table-striped shadow rounded">
         <thead class="table-dark">
-            <tr>
-                <th>Estudiante</th>
+    <tr>
+        <th>Estudiante</th>
                 <th>% obtenido</th>
                 <th>Nota final</th>
                 <th>Acciones</th>
-            </tr>
+    </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Where(c => c.Criterios.Nombre == materia))
-            {
-                <tr>
+    {
+        <tr>
                     <td>@item.Estudiantes.Nombre</td>
                     <td>@string.Format("{0:0}%", item.NotaBase)</td>
                     <td>@string.Format("{0:0}", item.NotaFinal)</td>
@@ -40,8 +40,8 @@
                         @Html.ActionLink("Detalles", "Details", new { id = item.IdCalificacion }, new { @class = "btn btn-primary btn-sm rounded" }) |
                         @Html.ActionLink("Eliminar", "Delete", new { id = item.IdCalificacion }, new { @class = "btn btn-danger btn-sm rounded" })
                     </td>
-                </tr>
-            }
+        </tr>
+    }
         </tbody>
-    </table>
+</table>
 }
